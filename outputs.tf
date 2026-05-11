@@ -40,7 +40,28 @@ output "rds_security_group_id" {
   value       = aws_security_group.rds.id
 }
 
+# ---------- Database ----------
+
+output "rds_endpoint" {
+  description = "Connection endpoint for the RDS Postgres instance (host:port)."
+  value       = aws_db_instance.main.endpoint
+}
+
+output "rds_db_name" {
+  description = "Default database created on the RDS instance."
+  value       = aws_db_instance.main.db_name
+}
+
+output "rds_credentials_secret_arn" {
+  description = "ARN of the Secrets Manager secret holding the RDS master credentials. Lambda reads from this at runtime."
+  value       = aws_secretsmanager_secret.rds_credentials.arn
+}
+
+output "rds_credentials_secret_name" {
+  description = "Name of the Secrets Manager secret (handy for `aws secretsmanager get-secret-value` from the CLI)."
+  value       = aws_secretsmanager_secret.rds_credentials.name
+}
+
 # ---------- Planned outputs (added as resources land) ----------
-# - rds_endpoint
 # - lambda_function_name
 # - api_gateway_invoke_url   # the live HTTPS URL recruiters will hit
