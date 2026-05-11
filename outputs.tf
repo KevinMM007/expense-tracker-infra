@@ -62,6 +62,18 @@ output "rds_credentials_secret_name" {
   value       = aws_secretsmanager_secret.rds_credentials.name
 }
 
+# ---------- Container registry ----------
+
+output "ecr_repository_url" {
+  description = "URL of the ECR repository that hosts the Lambda container image. Used as the target for `docker push`."
+  value       = aws_ecr_repository.api.repository_url
+}
+
+output "ecr_repository_name" {
+  description = "Short name of the ECR repository (useful for AWS CLI commands)."
+  value       = aws_ecr_repository.api.name
+}
+
 # ---------- Planned outputs (added as resources land) ----------
 # - lambda_function_name
 # - api_gateway_invoke_url   # the live HTTPS URL recruiters will hit
