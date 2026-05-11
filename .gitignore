@@ -1,0 +1,34 @@
+# Local .terraform working directories (provider plugins, modules, etc.)
+.terraform/
+.terraform.tfstate.lock.info
+
+# State files — should NEVER be committed
+# (state may contain database passwords, key material, etc.)
+*.tfstate
+*.tfstate.*
+*.tfstate.backup
+
+# Crash logs
+crash.log
+crash.*.log
+
+# Auto-loaded variable files that may contain secrets
+# (we DO commit terraform.tfvars in this repo because it has no secrets;
+#  *.auto.tfvars is reserved for local/secret overrides — never commit them)
+*.auto.tfvars
+*.auto.tfvars.json
+
+# CLI configuration files
+.terraformrc
+terraform.rc
+
+# Plan output binaries
+*.tfplan
+*.tfplan.binary
+
+# IDE / OS
+.vscode/
+.idea/
+*.swp
+.DS_Store
+Thumbs.db
