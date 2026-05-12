@@ -32,3 +32,5 @@ terraform.rc
 *.swp
 .DS_Store
 Thumbs.db
+lambda-out.json
+payload.json

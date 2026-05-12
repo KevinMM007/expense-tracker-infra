@@ -74,6 +74,26 @@ output "ecr_repository_name" {
   value       = aws_ecr_repository.api.name
 }
 
-# ---------- Planned outputs (added as resources land) ----------
-# - lambda_function_name
-# - api_gateway_invoke_url   # the live HTTPS URL recruiters will hit
+# ---------- Compute ----------
+
+output "lambda_function_name" {
+  description = "Name of the Lambda function. Use with `aws lambda update-function-code` etc."
+  value       = aws_lambda_function.api.function_name
+}
+
+output "lambda_function_arn" {
+  description = "ARN of the Lambda function."
+  value       = aws_lambda_function.api.arn
+}
+
+output "cloudwatch_log_group" {
+  description = "CloudWatch log group capturing Lambda invocations. Tail with `aws logs tail`."
+  value       = aws_cloudwatch_log_group.lambda.name
+}
+
+# ---------- Public endpoint ----------
+
+output "api_gateway_invoke_url" {
+  description = "Public HTTPS URL serving the API. This is what curl / browsers / recruiters hit."
+  value       = aws_apigatewayv2_api.main.api_endpoint
+}
