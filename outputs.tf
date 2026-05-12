@@ -97,3 +97,10 @@ output "api_gateway_invoke_url" {
   description = "Public HTTPS URL serving the API. This is what curl / browsers / recruiters hit."
   value       = aws_apigatewayv2_api.main.api_endpoint
 }
+
+# ---------- CI / CD ----------
+
+output "github_actions_role_arn" {
+  description = "IAM role ARN that GitHub Actions assumes via OIDC. Paste into the workflow's role-to-assume."
+  value       = aws_iam_role.github_actions.arn
+}
